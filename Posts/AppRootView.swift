@@ -3,7 +3,9 @@ import SwiftUI
 struct AppRootView: View {
   var body: some View {
     NavigationView {
-      MainScreenView(viewModel: MainScreenViewModel())
+      MainScreenView(
+        viewModel: MainScreenViewModel(storage: MemoryStorage())
+      )
     }
   }
 }

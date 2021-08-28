@@ -3,24 +3,23 @@ import SwiftUI
 struct PostEntryView: View {
 
   let navigatedPostID: Binding<Int?>
-  let post: PostRowViewModel
+  let viewModel: PostRowViewModel
 
-  init(post: PostRowViewModel, navigatedPostID: Binding<Int?>) {
+  init(viewModel: PostRowViewModel, navigatedPostID: Binding<Int?>) {
     self.navigatedPostID = navigatedPostID
-    self.post = post
+    self.viewModel = viewModel
   }
 
   var body: some View {
     NavigationLink(
-      destination: Text("Post #\(post.id)"),
-      tag: post.id,
+      destination: Text("Post #\(viewModel.id)"),
+      tag: viewModel.id,
       selection: navigatedPostID
     ) {
       VStack(alignment: .leading) {
-        Text(post.userName ?? "-")
-        Text(post.userCompany ?? "-")
-        Text(post.title)
-        Text(post.body)
+        Text(viewModel.user)
+        Text(viewModel.title)
+        Text(viewModel.body)
       }
       .lineLimit(1)
     }
@@ -29,7 +28,7 @@ struct PostEntryView: View {
 
 struct PostEntryViewPreviews: PreviewProvider {
   static var previews: some View {
-    let post = MainScreenViewModel().posts[0]
-    PostEntryView(post: post, navigatedPostID: .constant(nil))
+    let viewModel = MainScreenViewModel(storage: MemoryStorage()).getRowViewModel(postID: 1)
+    PostEntryView(viewModel: viewModel, navigatedPostID: .constant(nil))
   }
 }

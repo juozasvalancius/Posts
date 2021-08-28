@@ -12,8 +12,11 @@ struct MainScreenView: View {
   var isRefreshing: Bool = false
 
   var body: some View {
-    List(viewModel.posts) { post in
-        PostEntryView(post: post, navigatedPostID: $navigatedPostID)
+    List(viewModel.postIDs, id: \.self) { postID in
+      PostEntryView(
+        viewModel: viewModel.getRowViewModel(postID: postID),
+        navigatedPostID: $navigatedPostID
+      )
     }.refreshable(isRefreshing: $isRefreshing) {
       // fake refresh
       DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -27,6 +30,8 @@ struct MainScreenView: View {
 
 struct MainScreenViewPreviews: PreviewProvider {
   static var previews: some View {
-    MainScreenView(viewModel: MainScreenViewModel())
+    MainScreenView(
+      viewModel: MainScreenViewModel(storage: MemoryStorage())
+    )
   }
 }

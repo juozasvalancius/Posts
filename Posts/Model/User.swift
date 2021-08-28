@@ -1,4 +1,3 @@
-import Foundation
 
 struct User: Decodable {
   let id: Int
@@ -28,12 +27,14 @@ struct Coordinate: Decodable {
     case longitude = "lng"
   }
 
+}
+
+extension Coordinate {
   init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
     self.latitude = try container.decodeDoubleFromString(forKey: .latitude)
     self.longitude = try container.decodeDoubleFromString(forKey: .longitude)
   }
-
 }
 
 struct Company: Decodable {
