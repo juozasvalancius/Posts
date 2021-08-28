@@ -9,7 +9,7 @@ struct PostScreenView: View {
   var isRefreshing: Bool = false
 
   var body: some View {
-    ScrollView {
+    LegacyScrollView {
       VStack {
         HStack {
           Text("User:")
@@ -31,9 +31,11 @@ struct PostScreenView: View {
         .cornerRadius(8)
       }
       .padding()
-    }.refreshable(isRefreshing: $isRefreshing) {
+    }
+    .refreshable(isRefreshing: isRefreshing) {
       // fake refresh
-      DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+      isRefreshing = true
+      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
         isRefreshing = false
       }
     }

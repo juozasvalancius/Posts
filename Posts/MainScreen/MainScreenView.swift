@@ -21,16 +21,9 @@ struct MainScreenView: View {
       ) {
         PostEntryView(viewModel: viewModel.makeRowViewModel(postID: postID))
       }
-    }.refreshable(
-      isRefreshing: Binding<Bool>(
-        get: { viewModel.isRefreshing },
-        set: { flag in
-          if flag {
-            viewModel.didRequestRefresh()
-          }
-        })
-    ) {
-      //
+    }
+    .refreshable(isRefreshing: viewModel.isRefreshing) {
+      viewModel.didRequestRefresh()
     }
     .navigationBarTitle("Posts", displayMode: .inline)
   }

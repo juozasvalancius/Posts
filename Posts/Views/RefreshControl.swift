@@ -1,7 +1,7 @@
 import SwiftUI
 
 extension View {
-  func refreshable(isRefreshing: Binding<Bool>, onRefresh: @escaping () -> Void) -> some View {
+  func refreshable(isRefreshing: Bool, onRefresh: @escaping () -> Void) -> some View {
     let refreshControl = RefreshControl(
       isRefreshing: isRefreshing,
       onRefresh: onRefresh
@@ -14,31 +14,28 @@ extension View {
 /// and adds a native `UIRefreshControl` to it.
 private struct RefreshControl: UIViewRepresentable {
 
-  @Binding
-  var isRefreshing: Bool
-
+  let isRefreshing: Bool
   let onRefresh: () -> Void
 
   func makeUIView(context: Context) -> RefreshControlShadow {
     return RefreshControlShadow(view: self)
   }
 
-  func updateUIView(_ view: RefreshControlShadow, context: Context) {
-    view.isRefreshing = isRefreshing
+  func updateUIView(_ uiView: RefreshControlShadow, context: Context) {
+    uiView.view = self
   }
 
 }
 
 private final class RefreshControlShadow: UIView {
 
-  var isRefreshing = false {
+  var view: RefreshControl {
     didSet {
       updateUIRefreshControl()
     }
   }
 
   private weak var uiRefreshControl: UIRefreshControl?
-  private let view: RefreshControl
 
   init(view: RefreshControl) {
     self.view = view
@@ -81,7 +78,6 @@ private final class RefreshControlShadow: UIView {
 
   @objc
   private func didInitiateRefresh() {
-    view.isRefreshing = true
     view.onRefresh()
   }
 
@@ -90,11 +86,11 @@ private final class RefreshControlShadow: UIView {
       return
     }
 
-    guard refreshControl.isRefreshing != isRefreshing else {
+    guard refreshControl.isRefreshing != view.isRefreshing else {
       return
     }
 
-    if isRefreshing {
+    if view.isRefreshing {
       refreshControl.beginRefreshing()
     } else {
       refreshControl.endRefreshing()
