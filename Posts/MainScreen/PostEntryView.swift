@@ -3,9 +3,9 @@ import SwiftUI
 struct PostEntryView: View {
 
   let navigatedPostID: Binding<Int?>
-  let post: Post
+  let post: PostRowViewModel
 
-  init(post: Post, navigatedPostID: Binding<Int?>) {
+  init(post: PostRowViewModel, navigatedPostID: Binding<Int?>) {
     self.navigatedPostID = navigatedPostID
     self.post = post
   }
