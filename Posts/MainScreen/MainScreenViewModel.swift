@@ -2,7 +2,7 @@ import Foundation
 
 final class MainScreenViewModel: ObservableObject {
 
-  let storage: AppStorage
+  private let storage: AppStorage
 
   @Published
   private(set) var postIDs: [Int]
@@ -13,7 +13,7 @@ final class MainScreenViewModel: ObservableObject {
     postIDs = storage.getSortedPostIDs()
   }
 
-  func getRowViewModel(postID: Int) -> PostRowViewModel {
+  func makeRowViewModel(postID: Int) -> PostRowViewModel {
     guard let post = storage.getPost(id: postID) else {
       return PostRowViewModel(id: postID, title: "", body: "", user: "")
     }

@@ -5,7 +5,7 @@ final class MemoryStorage: AppStorage {
   private var posts = [
     1: Post(id: 1, userID: 1, title: "One", body: "Lorem ipsum one"),
     2: Post(id: 2, userID: 1, title: "Two", body: "Lorem ipsum two"),
-    3: Post(id: 3, userID: 1, title: "Three", body: "Lorem ipsum three"),
+    3: Post(id: 3, userID: 2, title: "Three", body: "Lorem ipsum three"),
   ]
 
   private var users = [
