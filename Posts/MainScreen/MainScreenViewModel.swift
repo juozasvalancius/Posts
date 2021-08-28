@@ -46,11 +46,12 @@ final class MainScreenViewModel: ObservableObject {
     isRefreshing = true
 
     reloadCancellable = dataLoader.updatePostList()
-      .catch { error -> Empty<Void, Never>in
+      .catch { error -> Just<Void> in
         print(error)
-        return Empty()
+        return Just(())
       }
       .sink { [weak self] in
+        self?.reloadCancellable = nil
         self?.isRefreshing = false
       }
 
