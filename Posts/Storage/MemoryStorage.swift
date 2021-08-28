@@ -42,4 +42,19 @@ final class MemoryStorage: AppStorage {
     return users[id]
   }
 
+  func updatePostList(_ posts: [Post]) {
+    self.posts = [Int: Post](
+      posts.lazy.map({ ($0.id, $0) }),
+      uniquingKeysWith: { lhs, _ in lhs }
+    )
+  }
+
+  func update(post: Post) {
+    posts[post.id] = post
+  }
+
+  func update(user: User) {
+    users[user.id] = user
+  }
+
 }

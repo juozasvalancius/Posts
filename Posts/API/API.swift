@@ -4,7 +4,7 @@ import Combine
 protocol AppAPI {
   func posts() -> AnyPublisher<[Post], APIError>
   func post(id: Int) -> AnyPublisher<Post, APIError>
-  func user(id: Int) -> AnyPublisher<Post, APIError>
+  func user(id: Int) -> AnyPublisher<User, APIError>
 }
 
 enum APIError: Error {
@@ -35,7 +35,7 @@ final class TypicodeAPI: AppAPI {
     return loadJSON(path: "/posts/\(id)")
   }
 
-  func user(id: Int) -> AnyPublisher<Post, APIError> {
+  func user(id: Int) -> AnyPublisher<User, APIError> {
     return loadJSON(path: "/users/\(id)")
   }
 

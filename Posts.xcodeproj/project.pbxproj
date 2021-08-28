@@ -20,6 +20,7 @@
 		AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525F26DA50C7005D8B7A /* LazyView.swift */; };
 		AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526226DA5262005D8B7A /* PostScreenView.swift */; };
 		AB64526626DA62B6005D8B7A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526526DA62B6005D8B7A /* API.swift */; };
+		AB64526826DA8197005D8B7A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526726DA8197005D8B7A /* DataManager.swift */; };
 		ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */; };
 		ABCA8CC626D10F2200CFC253 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */; };
 		ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC726D117AB00CFC253 /* AppRootView.swift */; };
@@ -55,6 +56,7 @@
 		AB64525F26DA50C7005D8B7A /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		AB64526226DA5262005D8B7A /* PostScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenView.swift; sourceTree = "<group>"; };
 		AB64526526DA62B6005D8B7A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		AB64526726DA8197005D8B7A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		ABCA8CC726D117AB00CFC253 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
@@ -142,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				AB64526526DA62B6005D8B7A /* API.swift */,
+				AB64526726DA8197005D8B7A /* DataManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */,
+				AB64526826DA8197005D8B7A /* DataManager.swift in Sources */,
 				ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */,
 				ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */,
 				AB64525E26DA4FDC005D8B7A /* PostScreenViewModel.swift in Sources */,
