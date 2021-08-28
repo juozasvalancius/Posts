@@ -1,12 +1,13 @@
+import Combine
 
 /// An implementation of `AppStorage` that stores all data in RAM.
 final class MemoryStorage: AppStorage {
 
-  private var posts = [
+  private var posts = CurrentValueSubject<[Int: Post], Never>([
     1: Post(id: 1, userID: 1, title: "One", body: "Lorem ipsum one"),
     2: Post(id: 2, userID: 1, title: "Two", body: "Lorem ipsum two"),
     3: Post(id: 3, userID: 2, title: "Three", body: "Lorem ipsum three"),
-  ]
+  ])
 
   private var users = [
     1: User(
@@ -30,12 +31,14 @@ final class MemoryStorage: AppStorage {
     )
   ]
 
-  func getSortedPostIDs() -> [Int] {
-    return posts.keys.sorted()
+  func sortedPostIDs() -> AnyPublisher<[Int], Never> {
+    return posts
+      .map({ $0.keys.sorted() })
+      .eraseToAnyPublisher()
   }
 
   func getPost(id: Int) -> Post? {
-    return posts[id]
+    return posts.value[id]
   }
 
   func getUser(id: Int) -> User? {
@@ -43,14 +46,14 @@ final class MemoryStorage: AppStorage {
   }
 
   func updatePostList(_ posts: [Post]) {
-    self.posts = [Int: Post](
+    self.posts.value = [Int: Post](
       posts.lazy.map({ ($0.id, $0) }),
       uniquingKeysWith: { lhs, _ in lhs }
     )
   }
 
   func update(post: Post) {
-    posts[post.id] = post
+    posts.value[post.id] = post
   }
 
   func update(user: User) {

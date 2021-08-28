@@ -20,7 +20,8 @@
 		AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525F26DA50C7005D8B7A /* LazyView.swift */; };
 		AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526226DA5262005D8B7A /* PostScreenView.swift */; };
 		AB64526626DA62B6005D8B7A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526526DA62B6005D8B7A /* API.swift */; };
-		AB64526826DA8197005D8B7A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526726DA8197005D8B7A /* DataManager.swift */; };
+		AB64526826DA8197005D8B7A /* StoringDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526726DA8197005D8B7A /* StoringDataLoader.swift */; };
+		AB6E676326DAA529000ECCE7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E676226DAA529000ECCE7 /* Services.swift */; };
 		ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */; };
 		ABCA8CC626D10F2200CFC253 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */; };
 		ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC726D117AB00CFC253 /* AppRootView.swift */; };
@@ -56,7 +57,8 @@
 		AB64525F26DA50C7005D8B7A /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
 		AB64526226DA5262005D8B7A /* PostScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenView.swift; sourceTree = "<group>"; };
 		AB64526526DA62B6005D8B7A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		AB64526726DA8197005D8B7A /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		AB64526726DA8197005D8B7A /* StoringDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoringDataLoader.swift; sourceTree = "<group>"; };
+		AB6E676226DAA529000ECCE7 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		ABCA8CC726D117AB00CFC253 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
@@ -144,7 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				AB64526526DA62B6005D8B7A /* API.swift */,
-				AB64526726DA8197005D8B7A /* DataManager.swift */,
+				AB64526726DA8197005D8B7A /* StoringDataLoader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -182,6 +184,7 @@
 			isa = PBXGroup;
 			children = (
 				ABDE1C3E26D1069100377B15 /* PostsApp.swift */,
+				AB6E676226DAA529000ECCE7 /* Services.swift */,
 				ABCA8CC726D117AB00CFC253 /* AppRootView.swift */,
 				AB64526426DA626A005D8B7A /* API */,
 				AB64525326DA40E4005D8B7A /* Storage */,
@@ -304,7 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */,
-				AB64526826DA8197005D8B7A /* DataManager.swift in Sources */,
+				AB64526826DA8197005D8B7A /* StoringDataLoader.swift in Sources */,
 				ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */,
 				ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */,
 				AB64525E26DA4FDC005D8B7A /* PostScreenViewModel.swift in Sources */,
@@ -316,6 +319,7 @@
 				AB64523B26D94E0E005D8B7A /* RefreshControl.swift in Sources */,
 				AB64525526DA40F2005D8B7A /* AppStorage.swift in Sources */,
 				AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */,
+				AB6E676326DAA529000ECCE7 /* Services.swift in Sources */,
 				AB64524026DA3480005D8B7A /* Post.swift in Sources */,
 				AB64523D26D96DA5005D8B7A /* PostEntryView.swift in Sources */,
 			);

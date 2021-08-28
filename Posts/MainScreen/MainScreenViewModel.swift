@@ -1,16 +1,25 @@
 import Foundation
+import Combine
 
 final class MainScreenViewModel: ObservableObject {
 
   let storage: AppStorage
+  let dataLoader: DataLoader
 
   @Published
-  private(set) var postIDs: [Int]
+  private(set) var postIDs = [Int]()
 
-  init(storage: AppStorage) {
+  @Published
+  private(set) var isRefreshing = false
+
+  private var postListObservation: AnyCancellable?
+  private var reloadCancellable: AnyCancellable?
+
+  init(storage: AppStorage, dataLoader: DataLoader) {
     self.storage = storage
+    self.dataLoader = dataLoader
 
-    postIDs = storage.getSortedPostIDs()
+    postListObservation = storage.sortedPostIDs().assign(to: \.postIDs, on: self)
   }
 
   func makeRowViewModel(postID: Int) -> PostRowViewModel {
@@ -27,6 +36,24 @@ final class MainScreenViewModel: ObservableObject {
     }
 
     return PostRowViewModel(id: post.id, title: post.title, body: post.body, user: userInfo)
+  }
+
+  func didRequestRefresh() {
+    guard !isRefreshing else {
+      return
+    }
+
+    isRefreshing = true
+
+    reloadCancellable = dataLoader.updatePostList()
+      .catch { error -> Empty<Void, Never>in
+        print(error)
+        return Empty()
+      }
+      .sink { [weak self] in
+        self?.isRefreshing = false
+      }
+
   }
 
 }

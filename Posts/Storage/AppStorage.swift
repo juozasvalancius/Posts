@@ -1,7 +1,8 @@
+import Combine
 
 protocol AppStorage: AnyObject {
 
-  func getSortedPostIDs() -> [Int]
+  func sortedPostIDs() -> AnyPublisher<[Int], Never>
   func getPost(id: Int) -> Post?
   func getUser(id: Int) -> User?
 
