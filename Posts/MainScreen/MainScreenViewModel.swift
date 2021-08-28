@@ -2,7 +2,7 @@ import Foundation
 
 final class MainScreenViewModel: ObservableObject {
 
-  private let storage: AppStorage
+  let storage: AppStorage
 
   @Published
   private(set) var postIDs: [Int]

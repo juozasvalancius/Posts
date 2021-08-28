@@ -16,6 +16,9 @@
 		AB64525726DA4195005D8B7A /* MemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525626DA4195005D8B7A /* MemoryStorage.swift */; };
 		AB64525926DA4B7C005D8B7A /* MainScreenViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525826DA4B7C005D8B7A /* MainScreenViewModelTests.swift */; };
 		AB64525B26DA4C0F005D8B7A /* MockStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525A26DA4C0F005D8B7A /* MockStorage.swift */; };
+		AB64525E26DA4FDC005D8B7A /* PostScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525D26DA4FDC005D8B7A /* PostScreenViewModel.swift */; };
+		AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64525F26DA50C7005D8B7A /* LazyView.swift */; };
+		AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526226DA5262005D8B7A /* PostScreenView.swift */; };
 		ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */; };
 		ABCA8CC626D10F2200CFC253 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */; };
 		ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC726D117AB00CFC253 /* AppRootView.swift */; };
@@ -47,6 +50,9 @@
 		AB64525626DA4195005D8B7A /* MemoryStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryStorage.swift; sourceTree = "<group>"; };
 		AB64525826DA4B7C005D8B7A /* MainScreenViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModelTests.swift; sourceTree = "<group>"; };
 		AB64525A26DA4C0F005D8B7A /* MockStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockStorage.swift; sourceTree = "<group>"; };
+		AB64525D26DA4FDC005D8B7A /* PostScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenViewModel.swift; sourceTree = "<group>"; };
+		AB64525F26DA50C7005D8B7A /* LazyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LazyView.swift; sourceTree = "<group>"; };
+		AB64526226DA5262005D8B7A /* PostScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenView.swift; sourceTree = "<group>"; };
 		ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		ABCA8CC726D117AB00CFC253 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
@@ -112,6 +118,24 @@
 			path = Storage;
 			sourceTree = "<group>";
 		};
+		AB64525C26DA4FB6005D8B7A /* PostScreen */ = {
+			isa = PBXGroup;
+			children = (
+				AB64525D26DA4FDC005D8B7A /* PostScreenViewModel.swift */,
+				AB64526226DA5262005D8B7A /* PostScreenView.swift */,
+			);
+			path = PostScreen;
+			sourceTree = "<group>";
+		};
+		AB64526126DA5181005D8B7A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				AB64525F26DA50C7005D8B7A /* LazyView.swift */,
+				AB64523A26D94E0E005D8B7A /* RefreshControl.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		ABCA8CC226D10ED400CFC253 /* MainScreen */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,10 +170,11 @@
 			children = (
 				ABDE1C3E26D1069100377B15 /* PostsApp.swift */,
 				ABCA8CC726D117AB00CFC253 /* AppRootView.swift */,
-				AB64523A26D94E0E005D8B7A /* RefreshControl.swift */,
 				AB64525326DA40E4005D8B7A /* Storage */,
 				AB64523E26DA3468005D8B7A /* Model */,
+				AB64526126DA5181005D8B7A /* Views */,
 				ABCA8CC226D10ED400CFC253 /* MainScreen */,
+				AB64525C26DA4FB6005D8B7A /* PostScreen */,
 				ABDE1C4226D1069100377B15 /* Assets.xcassets */,
 				ABDE1C4726D1069100377B15 /* Info.plist */,
 			);
@@ -264,14 +289,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */,
 				ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */,
 				ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */,
+				AB64525E26DA4FDC005D8B7A /* PostScreenViewModel.swift in Sources */,
 				ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */,
 				ABCA8CC626D10F2200CFC253 /* MainScreenView.swift in Sources */,
 				AB64525726DA4195005D8B7A /* MemoryStorage.swift in Sources */,
 				AB64524226DA3674005D8B7A /* User.swift in Sources */,
 				AB64523B26D94E0E005D8B7A /* RefreshControl.swift in Sources */,
 				AB64525526DA40F2005D8B7A /* AppStorage.swift in Sources */,
+				AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */,
 				AB64524026DA3480005D8B7A /* Post.swift in Sources */,
 				AB64523D26D96DA5005D8B7A /* PostEntryView.swift in Sources */,
 			);

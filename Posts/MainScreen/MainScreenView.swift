@@ -14,7 +14,11 @@ struct MainScreenView: View {
   var body: some View {
     List(viewModel.postIDs, id: \.self, selection: $navigatedPostID) { postID in
       NavigationLink(
-        destination: Text("Post #\(postID)"),
+        destination: LazyView {
+          PostScreenView(
+            viewModel: PostScreenViewModel(storage: viewModel.storage, postID: postID)
+          )
+        },
         tag: postID,
         selection: $navigatedPostID
       ) {
