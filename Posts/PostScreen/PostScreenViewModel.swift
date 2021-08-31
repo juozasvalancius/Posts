@@ -9,14 +9,15 @@ final class PostScreenViewModel: ObservableObject {
   let postID: Int
 
   @Published
-  var post = PostDataModel()
+  private(set) var post = PostDataModel()
 
   @Published
-  var user = UserDataModel()
+  private(set) var user = UserDataModel()
 
   @Published
   private(set) var isRefreshing = false
 
+  private var storageObservation: Cancellable?
   private var reloadCancellable: AnyCancellable?
 
   init(storage: AppStorage, dataLoader: DataLoader, postID: Int) {
@@ -27,6 +28,7 @@ final class PostScreenViewModel: ObservableObject {
     // observe post changes
     let postPublisher = storage.post(id: postID)
       .share()
+      .makeConnectable()
 
     // update post info UI
     postPublisher
@@ -39,6 +41,8 @@ final class PostScreenViewModel: ObservableObject {
       .flatMap(storage.user(id:))
       .compactMap(UserDataModel.init)
       .assign(to: &$user)
+
+    storageObservation = postPublisher.connect()
   }
 
   func didRequestRefresh() {
