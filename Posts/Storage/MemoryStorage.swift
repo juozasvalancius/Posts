@@ -3,12 +3,14 @@ import Combine
 /// An implementation of `AppStorage` that stores all data in RAM.
 final class MemoryStorage: AppStorage {
 
-  private var posts = CurrentValueSubject<[Int: Post], Never>([
+  @Published
+  private var posts = [
     1: Post(id: 1, userID: 1, title: "One", body: "Lorem ipsum one"),
     2: Post(id: 2, userID: 1, title: "Two", body: "Lorem ipsum two"),
     3: Post(id: 3, userID: 2, title: "Three", body: "Lorem ipsum three"),
-  ])
+  ]
 
+  @Published
   private var users = [
     1: User(
       id: 1,
@@ -32,13 +34,21 @@ final class MemoryStorage: AppStorage {
   ]
 
   func sortedPostIDs() -> AnyPublisher<[Int], Never> {
-    return posts
+    return $posts
       .map({ $0.keys.sorted() })
       .eraseToAnyPublisher()
   }
 
+  func post(id: Int) -> AnyPublisher<Post?, Never> {
+    return $posts.map(\.[id]).eraseToAnyPublisher()
+  }
+
+  func user(id: Int) -> AnyPublisher<User?, Never> {
+    return $users.map(\.[id]).eraseToAnyPublisher()
+  }
+
   func getPost(id: Int) -> Post? {
-    return posts.value[id]
+    return posts[id]
   }
 
   func getUser(id: Int) -> User? {
@@ -46,14 +56,14 @@ final class MemoryStorage: AppStorage {
   }
 
   func updatePostList(_ posts: [Post]) {
-    self.posts.value = [Int: Post](
+    self.posts = [Int: Post](
       posts.lazy.map({ ($0.id, $0) }),
       uniquingKeysWith: { lhs, _ in lhs }
     )
   }
 
   func update(post: Post) {
-    posts.value[post.id] = post
+    posts[post.id] = post
   }
 
   func update(user: User) {

@@ -3,8 +3,8 @@ import Combine
 
 final class MainScreenViewModel: ObservableObject {
 
-  let storage: AppStorage
-  let dataLoader: DataLoader
+  private let storage: AppStorage
+  private let dataLoader: DataLoader
 
   @Published
   private(set) var postIDs = [Int]()
@@ -12,14 +12,14 @@ final class MainScreenViewModel: ObservableObject {
   @Published
   private(set) var isRefreshing = false
 
-  private var postListObservation: AnyCancellable?
   private var reloadCancellable: AnyCancellable?
 
   init(storage: AppStorage, dataLoader: DataLoader) {
     self.storage = storage
     self.dataLoader = dataLoader
 
-    postListObservation = storage.sortedPostIDs().assign(to: \.postIDs, on: self)
+    // observe strage changes
+    storage.sortedPostIDs().assign(to: &$postIDs)
   }
 
   func makeRowViewModel(postID: Int) -> PostRowViewModel {
@@ -38,6 +38,10 @@ final class MainScreenViewModel: ObservableObject {
     return PostRowViewModel(id: post.id, title: post.title, body: post.body, user: userInfo)
   }
 
+  func makePostScreenViewModel(id: Int) -> PostScreenViewModel {
+    return PostScreenViewModel(storage: storage, dataLoader: dataLoader, postID: id)
+  }
+
   func didRequestRefresh() {
     guard !isRefreshing else {
       return
@@ -54,7 +58,6 @@ final class MainScreenViewModel: ObservableObject {
         self?.reloadCancellable = nil
         self?.isRefreshing = false
       }
-
   }
 
 }

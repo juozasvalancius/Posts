@@ -12,9 +12,7 @@ struct MainScreenView: View {
     List(viewModel.postIDs, id: \.self, selection: $navigatedPostID) { postID in
       NavigationLink(
         destination: LazyView {
-          PostScreenView(
-            viewModel: PostScreenViewModel(storage: viewModel.storage, postID: postID)
-          )
+          PostScreenView(viewModel: viewModel.makePostScreenViewModel(id: postID))
         },
         tag: postID,
         selection: $navigatedPostID

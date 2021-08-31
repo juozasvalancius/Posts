@@ -33,11 +33,7 @@ struct PostScreenView: View {
       .padding()
     }
     .refreshable(isRefreshing: isRefreshing) {
-      // fake refresh
-      isRefreshing = true
-      DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-        isRefreshing = false
-      }
+      viewModel.didRequestRefresh()
     }
     .navigationBarTitle(viewModel.post.title, displayMode: .inline)
   }
@@ -46,8 +42,13 @@ struct PostScreenView: View {
 
 struct PostScreenViewPreviews: PreviewProvider {
   static var previews: some View {
+    let services = Services()
     PostScreenView(
-      viewModel: PostScreenViewModel(storage: MemoryStorage(), postID: 1)
+      viewModel: PostScreenViewModel(
+        storage: services.storage,
+        dataLoader: services.dataLoader,
+        postID: 1
+      )
     )
   }
 }
