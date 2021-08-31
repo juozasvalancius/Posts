@@ -15,7 +15,7 @@ final class MainScreenViewModel: ObservableObject {
   private var reloadCancellable: AnyCancellable?
 
   @Published
-  var presentedPostScreen: PostScreenViewModel?
+  private(set) var presentedPostScreen: PostScreenViewModel?
 
   var presentedPostID: Int? {
     get {

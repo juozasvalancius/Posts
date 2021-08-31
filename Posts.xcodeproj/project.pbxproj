@@ -23,6 +23,7 @@
 		AB64526826DA8197005D8B7A /* StoringDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526726DA8197005D8B7A /* StoringDataLoader.swift */; };
 		AB6E676326DAA529000ECCE7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E676226DAA529000ECCE7 /* Services.swift */; };
 		AB7876D526DAB4B10070EC93 /* LegacyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7876D426DAB4B10070EC93 /* LegacyScrollView.swift */; };
+		ABC0933E26DE770F008554D6 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0933D26DE770F008554D6 /* MockDataLoader.swift */; };
 		ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */; };
 		ABCA8CC626D10F2200CFC253 /* MainScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */; };
 		ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC726D117AB00CFC253 /* AppRootView.swift */; };
@@ -61,6 +62,7 @@
 		AB64526726DA8197005D8B7A /* StoringDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoringDataLoader.swift; sourceTree = "<group>"; };
 		AB6E676226DAA529000ECCE7 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		AB7876D426DAB4B10070EC93 /* LegacyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyScrollView.swift; sourceTree = "<group>"; };
+		ABC0933D26DE770F008554D6 /* MockDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 		ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
 		ABCA8CC526D10F2200CFC253 /* MainScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenView.swift; sourceTree = "<group>"; };
 		ABCA8CC726D117AB00CFC253 /* AppRootView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootView.swift; sourceTree = "<group>"; };
@@ -110,6 +112,7 @@
 			isa = PBXGroup;
 			children = (
 				AB64525A26DA4C0F005D8B7A /* MockStorage.swift */,
+				ABC0933D26DE770F008554D6 /* MockDataLoader.swift */,
 				AB64525126DA3C8D005D8B7A /* CoordinateDecodingTests.swift */,
 				AB64525826DA4B7C005D8B7A /* MainScreenViewModelTests.swift */,
 				AB64524B26DA3C3A005D8B7A /* Info.plist */,
@@ -301,6 +304,7 @@
 			files = (
 				AB64525B26DA4C0F005D8B7A /* MockStorage.swift in Sources */,
 				AB64525226DA3C8D005D8B7A /* CoordinateDecodingTests.swift in Sources */,
+				ABC0933E26DE770F008554D6 /* MockDataLoader.swift in Sources */,
 				AB64525926DA4B7C005D8B7A /* MainScreenViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
