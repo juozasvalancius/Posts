@@ -13,6 +13,7 @@ final class MainScreenViewModel: ObservableObject {
   private(set) var isRefreshing = false
 
   private var reloadCancellable: AnyCancellable?
+  private var usersObservation: AnyCancellable?
 
   @Published
   private(set) var presentedPostScreen: PostScreenViewModel?
@@ -35,6 +36,11 @@ final class MainScreenViewModel: ObservableObject {
 
     // observe strage changes
     storage.sortedPostIDs().assign(to: &$postIDs)
+
+    // force reload when users change in the database
+    usersObservation = storage.usersChange().sink { [weak self] _ in
+      self?.objectWillChange.send()
+    }
   }
 
   func makeRowViewModel(postID: Int) -> PostRowViewModel {

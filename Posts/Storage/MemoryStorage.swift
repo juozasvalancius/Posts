@@ -47,12 +47,22 @@ final class MemoryStorage: AppStorage {
     return $users.map(\.[id]).eraseToAnyPublisher()
   }
 
+  func usersChange() -> AnyPublisher<Void, Never> {
+    return $users.map({ _ in }).eraseToAnyPublisher()
+  }
+
   func getPost(id: Int) -> Post? {
     return posts[id]
   }
 
   func getUser(id: Int) -> User? {
     return users[id]
+  }
+
+  func nextMissingUser() -> Int? {
+    return posts.values
+      .first(where: { users[$0.userID] == nil })?
+      .userID
   }
 
   func updatePostList(_ posts: [Post]) {

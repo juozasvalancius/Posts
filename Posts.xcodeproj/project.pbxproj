@@ -29,6 +29,7 @@
 		ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC726D117AB00CFC253 /* AppRootView.swift */; };
 		ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE1C3E26D1069100377B15 /* PostsApp.swift */; };
 		ABDE1C4326D1069100377B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDE1C4226D1069100377B15 /* Assets.xcassets */; };
+		ABFE249526DE87C3009EA95E /* BackgroundUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 		ABDE1C3E26D1069100377B15 /* PostsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsApp.swift; sourceTree = "<group>"; };
 		ABDE1C4226D1069100377B15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABDE1C4726D1069100377B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +155,7 @@
 			children = (
 				AB64526526DA62B6005D8B7A /* API.swift */,
 				AB64526726DA8197005D8B7A /* StoringDataLoader.swift */,
+				ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AB64526026DA50C7005D8B7A /* LazyView.swift in Sources */,
+				ABFE249526DE87C3009EA95E /* BackgroundUserLoader.swift in Sources */,
 				AB64526826DA8197005D8B7A /* StoringDataLoader.swift in Sources */,
 				ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */,
 				ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */,
