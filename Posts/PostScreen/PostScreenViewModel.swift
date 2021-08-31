@@ -5,7 +5,8 @@ final class PostScreenViewModel: ObservableObject {
 
   private let storage: AppStorage
   private let dataLoader: DataLoader
-  private let postID: Int
+
+  let postID: Int
 
   @Published
   var post = PostDataModel()
@@ -58,10 +59,6 @@ final class PostScreenViewModel: ObservableObject {
         self?.reloadCancellable = nil
         self?.isRefreshing = false
       }
-  }
-
-  deinit {
-    print("POST SCREEN DEINIT")
   }
 
 }

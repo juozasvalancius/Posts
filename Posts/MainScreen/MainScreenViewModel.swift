@@ -14,6 +14,21 @@ final class MainScreenViewModel: ObservableObject {
 
   private var reloadCancellable: AnyCancellable?
 
+  @Published
+  var presentedPostScreen: PostScreenViewModel?
+
+  var presentedPostID: Int? {
+    get {
+      return presentedPostScreen?.postID
+    } set {
+      if let postID = newValue {
+        presentedPostScreen = makePostScreenViewModel(id: postID)
+      } else {
+        presentedPostScreen = nil
+      }
+    }
+  }
+
   init(storage: AppStorage, dataLoader: DataLoader) {
     self.storage = storage
     self.dataLoader = dataLoader
@@ -38,7 +53,7 @@ final class MainScreenViewModel: ObservableObject {
     return PostRowViewModel(id: post.id, title: post.title, body: post.body, user: userInfo)
   }
 
-  func makePostScreenViewModel(id: Int) -> PostScreenViewModel {
+  private func makePostScreenViewModel(id: Int) -> PostScreenViewModel {
     return PostScreenViewModel(storage: storage, dataLoader: dataLoader, postID: id)
   }
 

@@ -5,17 +5,16 @@ struct MainScreenView: View {
   @ObservedObject
   var viewModel: MainScreenViewModel
 
-  @State
-  var navigatedPostID: Int? = nil
-
   var body: some View {
-    List(viewModel.postIDs, id: \.self, selection: $navigatedPostID) { postID in
+    List(viewModel.postIDs, id: \.self) { postID in
       NavigationLink(
         destination: LazyView {
-          PostScreenView(viewModel: viewModel.makePostScreenViewModel(id: postID))
+          if let viewModel = viewModel.presentedPostScreen {
+            PostScreenView(viewModel: viewModel)
+          }
         },
         tag: postID,
-        selection: $navigatedPostID
+        selection: $viewModel.presentedPostID
       ) {
         PostEntryView(viewModel: viewModel.makeRowViewModel(postID: postID))
       }
