@@ -5,6 +5,7 @@ final class MainScreenViewModel: ObservableObject {
 
   private let storage: AppStorage
   private let dataLoader: DataLoader
+  private let urlOpener: URLOpener
 
   @Published
   private(set) var postIDs = [Int]()
@@ -30,9 +31,10 @@ final class MainScreenViewModel: ObservableObject {
     }
   }
 
-  init(storage: AppStorage, dataLoader: DataLoader) {
+  init(storage: AppStorage, dataLoader: DataLoader, urlOpener: URLOpener) {
     self.storage = storage
     self.dataLoader = dataLoader
+    self.urlOpener = urlOpener
 
     // observe strage changes
     storage.sortedPostIDs().assign(to: &$postIDs)
@@ -60,7 +62,12 @@ final class MainScreenViewModel: ObservableObject {
   }
 
   private func makePostScreenViewModel(id: Int) -> PostScreenViewModel {
-    return PostScreenViewModel(storage: storage, dataLoader: dataLoader, postID: id)
+    return PostScreenViewModel(
+      storage: storage,
+      dataLoader: dataLoader,
+      urlOpener: urlOpener,
+      postID: id
+    )
   }
 
   func didRequestRefresh() {

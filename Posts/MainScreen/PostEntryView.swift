@@ -23,7 +23,8 @@ struct PostEntryViewPreviews: PreviewProvider {
   static var previews: some View {
     let viewModel = MainScreenViewModel(
       storage: MemoryStorage.makeWithMockData(),
-      dataLoader: BlankDataLoader()
+      dataLoader: BlankDataLoader(),
+      urlOpener: SystemURLOpener()
     ).makeRowViewModel(postID: 1)
     PostEntryView(viewModel: viewModel)
   }

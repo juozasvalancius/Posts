@@ -5,6 +5,7 @@ final class PostScreenViewModel: ObservableObject {
 
   private let storage: AppStorage
   private let dataLoader: DataLoader
+  private let urlOpener: URLOpener
 
   let postID: Int
 
@@ -12,7 +13,7 @@ final class PostScreenViewModel: ObservableObject {
   private(set) var post = PostDataModel()
 
   @Published
-  private(set) var user = UserDataModel()
+  private(set) var user: PostUserViewModel
 
   @Published
   private(set) var isRefreshing = false
@@ -20,10 +21,13 @@ final class PostScreenViewModel: ObservableObject {
   private var storageObservation: Cancellable?
   private var reloadCancellable: AnyCancellable?
 
-  init(storage: AppStorage, dataLoader: DataLoader, postID: Int) {
+  init(storage: AppStorage, dataLoader: DataLoader, urlOpener: URLOpener, postID: Int) {
     self.storage = storage
     self.dataLoader = dataLoader
+    self.urlOpener = urlOpener
     self.postID = postID
+
+    user = PostUserViewModel(urlOpener: urlOpener)
 
     // observe post changes
     let postPublisher = storage.post(id: postID)
@@ -39,7 +43,12 @@ final class PostScreenViewModel: ObservableObject {
     postPublisher
       .compactMap(\.?.userID)
       .flatMap(storage.user(id:))
-      .compactMap(UserDataModel.init)
+      .compactMap { [weak self] user in
+        guard let self = self, let user = user else {
+          return nil
+        }
+        return PostUserViewModel(urlOpener: self.urlOpener, user: user)
+      }
       .assign(to: &$user)
 
     storageObservation = postPublisher.connect()
@@ -65,42 +74,6 @@ final class PostScreenViewModel: ObservableObject {
       }
   }
 
-}
-
-struct UserDataModel {
-
-  let name: String
-  let company: String
-  let email: String
-  let phone: String
-  let address: String
-
-  init() {
-    name = ""
-    company = ""
-    email = ""
-    phone = ""
-    address = ""
-  }
-
-  init?(user: User?) {
-    guard let user = user else {
-      return nil
-    }
-
-    name = user.name
-    company = user.company.name
-    email = user.email
-    phone = user.phone
-    address = user.address.formatted
-  }
-
-}
-
-extension Address {
-  var formatted: String {
-    return "\(street), \(suite), \(city), \(zipcode)"
-  }
 }
 
 struct PostDataModel {

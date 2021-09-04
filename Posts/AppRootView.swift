@@ -9,7 +9,8 @@ struct AppRootView: View {
       MainScreenView(
         viewModel: MainScreenViewModel(
           storage: services.storage,
-          dataLoader: services.dataLoader
+          dataLoader: services.dataLoader,
+          urlOpener: services.urlOpener
         )
       )
     }

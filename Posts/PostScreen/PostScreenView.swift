@@ -11,7 +11,7 @@ struct PostScreenView: View {
   var body: some View {
     LegacyScrollView {
       VStack(spacing: 16) {
-        PostUserView(dataModel: viewModel.user)
+        PostUserView(viewModel: viewModel.user)
           .layoutPriority(1)
         PostContentView(dataModel: viewModel.post)
       }
@@ -31,6 +31,7 @@ struct PostScreenViewPreviews: PreviewProvider {
       viewModel: PostScreenViewModel(
         storage: MemoryStorage.makeWithMockData(),
         dataLoader: BlankDataLoader(),
+        urlOpener: SystemURLOpener(),
         postID: 3
       )
     )

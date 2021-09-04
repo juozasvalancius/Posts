@@ -2,7 +2,7 @@ import SwiftUI
 
 struct PostUserView: View {
 
-  let dataModel: UserDataModel
+  let viewModel: PostUserViewModel
 
   var body: some View {
     VStack(spacing: 0) {
@@ -10,21 +10,27 @@ struct PostUserView: View {
         Circle()
           .frame(width: 88, height: 88)
         VStack(alignment: .leading) {
-          Text(dataModel.name)
+          Text(viewModel.name)
             .font(.headline)
             .fixedSize(horizontal: false, vertical: true)
-          Text(dataModel.company)
+          Text(viewModel.company)
             .fixedSize(horizontal: false, vertical: true)
         }
         Spacer()
       }
       .padding()
       Separator()
-      UserInfoCell(icon: "envelope", text: dataModel.email)
+      UserInfoCell(icon: "envelope", text: viewModel.email) {
+        viewModel.didClickEmail()
+      }
       Separator()
-      UserInfoCell(icon: "phone", text: dataModel.phone)
+      UserInfoCell(icon: "phone", text: viewModel.phone) {
+        viewModel.didClickPhone()
+      }
       Separator()
-      UserInfoCell(icon: "mappin.and.ellipse", text: dataModel.address)
+      UserInfoCell(icon: "mappin.and.ellipse", text: viewModel.address) {
+        viewModel.didClickAddress()
+      }
     }
     .background(Color("BlockBackground"))
     .cornerRadius(8)
@@ -36,9 +42,10 @@ struct UserInfoCell: View {
 
   let icon: String
   let text: String
+  let action: () -> Void
 
   var body: some View {
-    Button(action: {}, label: {
+    Button(action: action, label: {
       HStack(spacing: 0) {
         Image(systemName: icon)
           .frame(width: 44)
@@ -75,7 +82,9 @@ struct Separator: View {
 struct PostUserViewPreviews: PreviewProvider {
   static var previews: some View {
     let user = MemoryStorage.makeWithMockData().getUser(id: 1)
-    PostUserView(dataModel: UserDataModel(user: user)!)
-      .padding()
+    PostUserView(
+      viewModel: PostUserViewModel(urlOpener: SystemURLOpener(), user: user)!
+    )
+    .padding()
   }
 }

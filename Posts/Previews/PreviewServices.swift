@@ -9,4 +9,8 @@ struct PreviewServices: Services {
     return BlankDataLoader()
   }
 
+  var urlOpener: URLOpener {
+    return SystemURLOpener()
+  }
+
 }
