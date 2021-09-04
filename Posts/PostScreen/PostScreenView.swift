@@ -10,25 +10,17 @@ struct PostScreenView: View {
 
   var body: some View {
     LegacyScrollView {
-      VStack {
+      VStack(spacing: 16) {
         PostUserView(dataModel: viewModel.user)
-        HStack {
-          VStack(alignment: .leading) {
-            Text(viewModel.post.title)
-            Text(viewModel.post.body)
-          }
-          Spacer()
-        }
-        .padding()
-        .background(Color(white: 0, opacity: 0.2))
-        .cornerRadius(8)
+          .layoutPriority(1)
+        PostContentView(dataModel: viewModel.post)
       }
       .padding()
     }
     .refreshable(isRefreshing: isRefreshing) {
       viewModel.didRequestRefresh()
     }
-    .navigationBarTitle(viewModel.post.title, displayMode: .inline)
+    .navigationBarTitle("Post", displayMode: .inline)
   }
 
 }
@@ -39,7 +31,7 @@ struct PostScreenViewPreviews: PreviewProvider {
       viewModel: PostScreenViewModel(
         storage: MemoryStorage.makeWithMockData(),
         dataLoader: BlankDataLoader(),
-        postID: 1
+        postID: 3
       )
     )
   }

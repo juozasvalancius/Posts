@@ -12,7 +12,9 @@ struct PostUserView: View {
         VStack(alignment: .leading) {
           Text(dataModel.name)
             .font(.headline)
+            .fixedSize(horizontal: false, vertical: true)
           Text(dataModel.company)
+            .fixedSize(horizontal: false, vertical: true)
         }
         Spacer()
       }
@@ -23,9 +25,8 @@ struct PostUserView: View {
       UserInfoCell(icon: "phone", text: dataModel.phone)
       Separator()
       UserInfoCell(icon: "mappin.and.ellipse", text: dataModel.address)
-      Separator()
     }
-    .background(Color(white: 0, opacity: 0.2))
+    .background(Color("BlockBackground"))
     .cornerRadius(8)
   }
 
@@ -47,6 +48,7 @@ struct UserInfoCell: View {
       }
       .frame(minHeight: 44)
       .foregroundColor(.blue)
+      .contentShape(Rectangle().inset(by: 8)) // makes sure the Spacer is tappable
     })
     .buttonStyle(HighlightingButtonStyle())
   }
@@ -56,7 +58,7 @@ struct HighlightingButtonStyle: ButtonStyle {
   func makeBody(configuration: Configuration) -> some View {
     configuration.label
       .overlay(
-        Color.white
+        Color("Background")
           .opacity(configuration.isPressed ? 0.5 : 0)
       )
   }
@@ -65,7 +67,7 @@ struct HighlightingButtonStyle: ButtonStyle {
 struct Separator: View {
   var body: some View {
     Rectangle()
-      .foregroundColor(.white)
+      .foregroundColor(Color("Background"))
       .frame(height: 1)
   }
 }
@@ -74,7 +76,6 @@ struct PostUserViewPreviews: PreviewProvider {
   static var previews: some View {
     let user = MemoryStorage.makeWithMockData().getUser(id: 1)
     PostUserView(dataModel: UserDataModel(user: user)!)
-      .frame(height: 120)
       .padding()
   }
 }
