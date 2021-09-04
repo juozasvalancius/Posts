@@ -43,6 +43,9 @@ final class MainScreenViewModel: ObservableObject {
     usersObservation = storage.usersChange().sink { [weak self] _ in
       self?.objectWillChange.send()
     }
+
+    // refresh on open
+    didRequestRefresh()
   }
 
   func makeRowViewModel(postID: Int) -> PostRowViewModel {

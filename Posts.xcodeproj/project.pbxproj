@@ -33,6 +33,7 @@
 		ABF5AB2A26E391660036D5DB /* PostContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5AB2926E391660036D5DB /* PostContentView.swift */; };
 		ABF5AB2C26E3A5920036D5DB /* PostUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5AB2B26E3A5920036D5DB /* PostUserViewModel.swift */; };
 		ABF5AB2E26E3B41D0036D5DB /* URLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF5AB2D26E3B41D0036D5DB /* URLOpener.swift */; };
+		ABFB161026E3C2730072614B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB160F26E3C2730072614B /* LaunchScreen.storyboard */; };
 		ABFE249526DE87C3009EA95E /* BackgroundUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */; };
 		ABFE372626E36E040050FFEC /* PostUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE372526E36E040050FFEC /* PostUserView.swift */; };
 		ABFE372926E37C7B0050FFEC /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = ABFE372826E37C7B0050FFEC /* posts.json */; };
@@ -84,6 +85,7 @@
 		ABF5AB2926E391660036D5DB /* PostContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostContentView.swift; sourceTree = "<group>"; };
 		ABF5AB2B26E3A5920036D5DB /* PostUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserViewModel.swift; sourceTree = "<group>"; };
 		ABF5AB2D26E3B41D0036D5DB /* URLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpener.swift; sourceTree = "<group>"; };
+		ABFB160F26E3C2730072614B /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserLoader.swift; sourceTree = "<group>"; };
 		ABFE372526E36E040050FFEC /* PostUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserView.swift; sourceTree = "<group>"; };
 		ABFE372826E37C7B0050FFEC /* posts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 				ABDE1C4226D1069100377B15 /* Assets.xcassets */,
 				ABFE372726E37C1E0050FFEC /* MockData */,
 				ABFE372E26E37F4C0050FFEC /* Previews */,
+				ABFB160F26E3C2730072614B /* LaunchScreen.storyboard */,
 				ABDE1C4726D1069100377B15 /* Info.plist */,
 			);
 			path = Posts;
@@ -338,6 +341,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABFE372B26E37CE30050FFEC /* users.json in Resources */,
+				ABFB161026E3C2730072614B /* LaunchScreen.storyboard in Resources */,
 				ABDE1C4326D1069100377B15 /* Assets.xcassets in Resources */,
 				ABFE372926E37C7B0050FFEC /* posts.json in Resources */,
 			);
