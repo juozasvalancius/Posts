@@ -4,34 +4,10 @@ import Combine
 final class MemoryStorage: AppStorage {
 
   @Published
-  private var posts = [
-    1: Post(id: 1, userID: 1, title: "One", body: "Lorem ipsum one"),
-    2: Post(id: 2, userID: 1, title: "Two", body: "Lorem ipsum two"),
-    3: Post(id: 3, userID: 2, title: "Three", body: "Lorem ipsum three"),
-  ]
+  private var posts = [Int: Post]()
 
   @Published
-  private var users = [
-    1: User(
-      id: 1,
-      name: "John",
-      email: "john@example.com",
-      address: Address(
-        street: "str.",
-        suite: "suite",
-        city: "Vilnius",
-        zipcode: "00123",
-        geo: Coordinate(latitude: 0, longitude: 0)
-      ),
-      phone: "+1234567890",
-      website: "example.com",
-      company: Company(
-        name: "Example Inc.",
-        catchPhrase: "catch",
-        bs: "bs"
-      )
-    )
-  ]
+  private var users = [Int: User]()
 
   func sortedPostIDs() -> AnyPublisher<[Int], Never> {
     return $posts

@@ -21,7 +21,7 @@
 		AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526226DA5262005D8B7A /* PostScreenView.swift */; };
 		AB64526626DA62B6005D8B7A /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526526DA62B6005D8B7A /* API.swift */; };
 		AB64526826DA8197005D8B7A /* StoringDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB64526726DA8197005D8B7A /* StoringDataLoader.swift */; };
-		AB6E676326DAA529000ECCE7 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E676226DAA529000ECCE7 /* Services.swift */; };
+		AB6E676326DAA529000ECCE7 /* AppServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB6E676226DAA529000ECCE7 /* AppServices.swift */; };
 		AB7876D526DAB4B10070EC93 /* LegacyScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB7876D426DAB4B10070EC93 /* LegacyScrollView.swift */; };
 		ABC0933E26DE770F008554D6 /* MockDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABC0933D26DE770F008554D6 /* MockDataLoader.swift */; };
 		ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */; };
@@ -29,8 +29,13 @@
 		ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCA8CC726D117AB00CFC253 /* AppRootView.swift */; };
 		ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE1C3E26D1069100377B15 /* PostsApp.swift */; };
 		ABDE1C4326D1069100377B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDE1C4226D1069100377B15 /* Assets.xcassets */; };
+		ABF091DD26E3838E00B73F40 /* PreviewServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF091DC26E3838E00B73F40 /* PreviewServices.swift */; };
 		ABFE249526DE87C3009EA95E /* BackgroundUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */; };
 		ABFE372626E36E040050FFEC /* PostUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE372526E36E040050FFEC /* PostUserView.swift */; };
+		ABFE372926E37C7B0050FFEC /* posts.json in Resources */ = {isa = PBXBuildFile; fileRef = ABFE372826E37C7B0050FFEC /* posts.json */; };
+		ABFE372B26E37CE30050FFEC /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = ABFE372A26E37CE30050FFEC /* users.json */; };
+		ABFE372D26E37E5F0050FFEC /* BlankDataLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE372C26E37E5F0050FFEC /* BlankDataLoader.swift */; };
+		ABFE373026E37F750050FFEC /* MemoryStorage+MockData.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE372F26E37F750050FFEC /* MemoryStorage+MockData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +67,7 @@
 		AB64526226DA5262005D8B7A /* PostScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostScreenView.swift; sourceTree = "<group>"; };
 		AB64526526DA62B6005D8B7A /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		AB64526726DA8197005D8B7A /* StoringDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoringDataLoader.swift; sourceTree = "<group>"; };
-		AB6E676226DAA529000ECCE7 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
+		AB6E676226DAA529000ECCE7 /* AppServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppServices.swift; sourceTree = "<group>"; };
 		AB7876D426DAB4B10070EC93 /* LegacyScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyScrollView.swift; sourceTree = "<group>"; };
 		ABC0933D26DE770F008554D6 /* MockDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataLoader.swift; sourceTree = "<group>"; };
 		ABCA8CC326D10F0400CFC253 /* MainScreenViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainScreenViewModel.swift; sourceTree = "<group>"; };
@@ -72,8 +77,13 @@
 		ABDE1C3E26D1069100377B15 /* PostsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsApp.swift; sourceTree = "<group>"; };
 		ABDE1C4226D1069100377B15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABDE1C4726D1069100377B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ABF091DC26E3838E00B73F40 /* PreviewServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewServices.swift; sourceTree = "<group>"; };
 		ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserLoader.swift; sourceTree = "<group>"; };
 		ABFE372526E36E040050FFEC /* PostUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserView.swift; sourceTree = "<group>"; };
+		ABFE372826E37C7B0050FFEC /* posts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = posts.json; sourceTree = "<group>"; };
+		ABFE372A26E37CE30050FFEC /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		ABFE372C26E37E5F0050FFEC /* BlankDataLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankDataLoader.swift; sourceTree = "<group>"; };
+		ABFE372F26E37F750050FFEC /* MemoryStorage+MockData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MemoryStorage+MockData.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,7 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				ABDE1C3E26D1069100377B15 /* PostsApp.swift */,
-				AB6E676226DAA529000ECCE7 /* Services.swift */,
+				AB6E676226DAA529000ECCE7 /* AppServices.swift */,
 				ABCA8CC726D117AB00CFC253 /* AppRootView.swift */,
 				AB64526426DA626A005D8B7A /* API */,
 				AB64525326DA40E4005D8B7A /* Storage */,
@@ -205,9 +215,30 @@
 				ABCA8CC226D10ED400CFC253 /* MainScreen */,
 				AB64525C26DA4FB6005D8B7A /* PostScreen */,
 				ABDE1C4226D1069100377B15 /* Assets.xcassets */,
+				ABFE372726E37C1E0050FFEC /* MockData */,
+				ABFE372E26E37F4C0050FFEC /* Previews */,
 				ABDE1C4726D1069100377B15 /* Info.plist */,
 			);
 			path = Posts;
+			sourceTree = "<group>";
+		};
+		ABFE372726E37C1E0050FFEC /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				ABFE372826E37C7B0050FFEC /* posts.json */,
+				ABFE372A26E37CE30050FFEC /* users.json */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		ABFE372E26E37F4C0050FFEC /* Previews */ = {
+			isa = PBXGroup;
+			children = (
+				ABF091DC26E3838E00B73F40 /* PreviewServices.swift */,
+				ABFE372C26E37E5F0050FFEC /* BlankDataLoader.swift */,
+				ABFE372F26E37F750050FFEC /* MemoryStorage+MockData.swift */,
+			);
+			path = Previews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -297,7 +328,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABFE372B26E37CE30050FFEC /* users.json in Resources */,
 				ABDE1C4326D1069100377B15 /* Assets.xcassets in Resources */,
+				ABFE372926E37C7B0050FFEC /* posts.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,17 +357,20 @@
 				AB64526826DA8197005D8B7A /* StoringDataLoader.swift in Sources */,
 				ABCA8CC826D117AB00CFC253 /* AppRootView.swift in Sources */,
 				ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */,
+				ABFE372D26E37E5F0050FFEC /* BlankDataLoader.swift in Sources */,
 				AB64525E26DA4FDC005D8B7A /* PostScreenViewModel.swift in Sources */,
 				ABCA8CC426D10F0400CFC253 /* MainScreenViewModel.swift in Sources */,
 				AB7876D526DAB4B10070EC93 /* LegacyScrollView.swift in Sources */,
 				ABCA8CC626D10F2200CFC253 /* MainScreenView.swift in Sources */,
 				AB64526626DA62B6005D8B7A /* API.swift in Sources */,
+				ABFE373026E37F750050FFEC /* MemoryStorage+MockData.swift in Sources */,
 				AB64525726DA4195005D8B7A /* MemoryStorage.swift in Sources */,
 				AB64524226DA3674005D8B7A /* User.swift in Sources */,
 				AB64523B26D94E0E005D8B7A /* RefreshControl.swift in Sources */,
 				AB64525526DA40F2005D8B7A /* AppStorage.swift in Sources */,
+				ABF091DD26E3838E00B73F40 /* PreviewServices.swift in Sources */,
 				AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */,
-				AB6E676326DAA529000ECCE7 /* Services.swift in Sources */,
+				AB6E676326DAA529000ECCE7 /* AppServices.swift in Sources */,
 				AB64524026DA3480005D8B7A /* Post.swift in Sources */,
 				ABFE372626E36E040050FFEC /* PostUserView.swift in Sources */,
 				AB64523D26D96DA5005D8B7A /* PostEntryView.swift in Sources */,
@@ -512,6 +548,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = Posts/MockData;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Posts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -532,6 +569,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = Posts/MockData;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = Posts/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;

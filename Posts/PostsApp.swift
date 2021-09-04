@@ -4,7 +4,7 @@ import SwiftUI
 struct PostsApp: App {
   var body: some Scene {
     WindowGroup {
-      AppRootView()
+      AppRootView(services: AppServices())
     }
   }
 }

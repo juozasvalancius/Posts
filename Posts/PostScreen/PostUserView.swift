@@ -72,7 +72,7 @@ struct Separator: View {
 
 struct PostUserViewPreviews: PreviewProvider {
   static var previews: some View {
-    let user = MemoryStorage().getUser(id: 1)
+    let user = MemoryStorage.makeWithMockData().getUser(id: 1)
     PostUserView(dataModel: UserDataModel(user: user)!)
       .frame(height: 120)
       .padding()

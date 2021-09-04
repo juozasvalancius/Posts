@@ -35,11 +35,10 @@ struct PostScreenView: View {
 
 struct PostScreenViewPreviews: PreviewProvider {
   static var previews: some View {
-    let services = Services()
     PostScreenView(
       viewModel: PostScreenViewModel(
-        storage: services.storage,
-        dataLoader: services.dataLoader,
+        storage: MemoryStorage.makeWithMockData(),
+        dataLoader: BlankDataLoader(),
         postID: 1
       )
     )

@@ -29,11 +29,10 @@ struct MainScreenView: View {
 
 struct MainScreenViewPreviews: PreviewProvider {
   static var previews: some View {
-    let services = Services()
     MainScreenView(
       viewModel: MainScreenViewModel(
-        storage: services.storage,
-        dataLoader: services.dataLoader
+        storage: MemoryStorage.makeWithMockData(),
+        dataLoader: BlankDataLoader()
       )
     )
   }

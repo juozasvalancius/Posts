@@ -1,5 +1,10 @@
 
-struct Services {
+protocol Services {
+  var storage: AppStorage { get }
+  var dataLoader: DataLoader { get }
+}
+
+struct AppServices: Services {
 
   let api: AppAPI
   let storage: AppStorage

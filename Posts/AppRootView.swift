@@ -2,7 +2,7 @@ import SwiftUI
 
 struct AppRootView: View {
 
-  let services = Services()
+  let services: Services
 
   var body: some View {
     NavigationView {
@@ -19,6 +19,6 @@ struct AppRootView: View {
 
 struct AppRootViewPreviews: PreviewProvider {
   static var previews: some View {
-    AppRootView()
+    AppRootView(services: PreviewServices())
   }
 }

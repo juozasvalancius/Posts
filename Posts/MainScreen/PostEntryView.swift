@@ -21,10 +21,9 @@ struct PostEntryView: View {
 
 struct PostEntryViewPreviews: PreviewProvider {
   static var previews: some View {
-    let services = Services()
     let viewModel = MainScreenViewModel(
-      storage: services.storage,
-      dataLoader: services.dataLoader
+      storage: MemoryStorage.makeWithMockData(),
+      dataLoader: BlankDataLoader()
     ).makeRowViewModel(postID: 1)
     PostEntryView(viewModel: viewModel)
   }
