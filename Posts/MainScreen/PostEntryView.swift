@@ -24,7 +24,8 @@ struct PostEntryViewPreviews: PreviewProvider {
     let viewModel = MainScreenViewModel(
       storage: MemoryStorage.makeWithMockData(),
       dataLoader: BlankDataLoader(),
-      urlOpener: SystemURLOpener()
+      urlOpener: SystemURLOpener(),
+      imageLoader: BlankImageLoader()
     ).makeRowViewModel(postID: 1)
     PostEntryView(viewModel: viewModel)
   }

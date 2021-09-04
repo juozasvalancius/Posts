@@ -32,6 +32,7 @@ struct PostScreenViewPreviews: PreviewProvider {
         storage: MemoryStorage.makeWithMockData(),
         dataLoader: BlankDataLoader(),
         urlOpener: SystemURLOpener(),
+        imageLoader: BlankImageLoader(),
         postID: 3
       )
     )

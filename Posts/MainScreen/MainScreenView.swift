@@ -33,7 +33,8 @@ struct MainScreenViewPreviews: PreviewProvider {
       viewModel: MainScreenViewModel(
         storage: MemoryStorage.makeWithMockData(),
         dataLoader: BlankDataLoader(),
-        urlOpener: SystemURLOpener()
+        urlOpener: SystemURLOpener(),
+        imageLoader: BlankImageLoader()
       )
     )
   }

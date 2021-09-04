@@ -6,6 +6,7 @@ final class MainScreenViewModel: ObservableObject {
   private let storage: AppStorage
   private let dataLoader: DataLoader
   private let urlOpener: URLOpener
+  private let imageLoader: ImageLoader
 
   @Published
   private(set) var postIDs = [Int]()
@@ -31,10 +32,16 @@ final class MainScreenViewModel: ObservableObject {
     }
   }
 
-  init(storage: AppStorage, dataLoader: DataLoader, urlOpener: URLOpener) {
+  init(
+    storage: AppStorage,
+    dataLoader: DataLoader,
+    urlOpener: URLOpener,
+    imageLoader: ImageLoader
+  ) {
     self.storage = storage
     self.dataLoader = dataLoader
     self.urlOpener = urlOpener
+    self.imageLoader = imageLoader
 
     // observe strage changes
     storage.sortedPostIDs().assign(to: &$postIDs)
@@ -69,6 +76,7 @@ final class MainScreenViewModel: ObservableObject {
       storage: storage,
       dataLoader: dataLoader,
       urlOpener: urlOpener,
+      imageLoader: imageLoader,
       postID: id
     )
   }

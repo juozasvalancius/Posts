@@ -46,7 +46,6 @@ final class TypicodeAPI: AppAPI {
 
     return session.dataTaskPublisher(for: url)
       .tryMap { data, response in
-        print("API RESPONE", data.count)
         guard let httpResponse = response as? HTTPURLResponse else {
           throw APIError.internalInconsistency
         }
@@ -57,7 +56,6 @@ final class TypicodeAPI: AppAPI {
       }
       .decode(type: Result.self, decoder: JSONDecoder())
       .mapError { error -> APIError in
-        print("API ERROR", error)
         switch error {
         case is URLError:
           return APIError.networkError

@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import Combine
 
 final class PostScreenViewModel: ObservableObject {
@@ -6,6 +6,7 @@ final class PostScreenViewModel: ObservableObject {
   private let storage: AppStorage
   private let dataLoader: DataLoader
   private let urlOpener: URLOpener
+  private let imageLoader: ImageLoader
 
   let postID: Int
 
@@ -18,13 +19,24 @@ final class PostScreenViewModel: ObservableObject {
   @Published
   private(set) var isRefreshing = false
 
+  @Published
+  private var userPicture: UIImage?
+
   private var storageObservation: Cancellable?
   private var reloadCancellable: AnyCancellable?
+  private var userPictureCancellable: AnyCancellable?
 
-  init(storage: AppStorage, dataLoader: DataLoader, urlOpener: URLOpener, postID: Int) {
+  init(
+    storage: AppStorage,
+    dataLoader: DataLoader,
+    urlOpener: URLOpener,
+    imageLoader: ImageLoader,
+    postID: Int
+  ) {
     self.storage = storage
     self.dataLoader = dataLoader
     self.urlOpener = urlOpener
+    self.imageLoader = imageLoader
     self.postID = postID
 
     user = PostUserViewModel(urlOpener: urlOpener)
@@ -43,11 +55,16 @@ final class PostScreenViewModel: ObservableObject {
     postPublisher
       .compactMap(\.?.userID)
       .flatMap(storage.user(id:))
-      .compactMap { [weak self] user in
-        guard let self = self, let user = user else {
+      .compactMap({ $0 }) // continue only on successful user updates
+      .combineLatest($userPicture) // combine user data and user photo updates
+      .compactMap { [weak self] (user, photo) in
+        guard let self = self else {
           return nil
         }
-        return PostUserViewModel(urlOpener: self.urlOpener, user: user)
+        if user.id != self.user.userID {
+          self.refreshProfilePhoto(userID: user.id)
+        }
+        return PostUserViewModel(urlOpener: self.urlOpener, user: user, profilePicture: photo)
       }
       .assign(to: &$user)
 
@@ -71,6 +88,18 @@ final class PostScreenViewModel: ObservableObject {
       .sink { [weak self] in
         self?.reloadCancellable = nil
         self?.isRefreshing = false
+      }
+
+    if let userID = user.userID {
+      refreshProfilePhoto(userID: userID)
+    }
+  }
+
+  private func refreshProfilePhoto(userID: Int) {
+    // cancel any previous load and start new
+    userPictureCancellable = imageLoader.loadProfilePicture(forUser: userID, size: 88)
+      .sink { [weak self] image in
+        self?.userPicture = image
       }
   }
 

@@ -13,4 +13,8 @@ struct PreviewServices: Services {
     return SystemURLOpener()
   }
 
+  var imageLoader: ImageLoader {
+    return BlankImageLoader()
+  }
+
 }

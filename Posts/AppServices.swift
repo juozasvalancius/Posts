@@ -3,6 +3,7 @@ protocol Services {
   var storage: AppStorage { get }
   var dataLoader: DataLoader { get }
   var urlOpener: URLOpener { get }
+  var imageLoader: ImageLoader { get }
 }
 
 struct AppServices: Services {
@@ -12,6 +13,7 @@ struct AppServices: Services {
   let dataLoader: DataLoader
   let backgroundUserLoader: BackgroundUserLoader
   let urlOpener: URLOpener
+  let imageLoader: ImageLoader
 
   init() {
     api = TypicodeAPI()
@@ -19,6 +21,7 @@ struct AppServices: Services {
     dataLoader = StoringDataLoader(api: api, storage: storage)
     backgroundUserLoader = BackgroundUserLoader(storage: storage, dataLoader: dataLoader)
     urlOpener = SystemURLOpener()
+    imageLoader = UnsplashThumbnailLoader()
   }
 
 }

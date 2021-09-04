@@ -1,4 +1,4 @@
-import Foundation
+import UIKit
 import Combine
 
 final class PostUserViewModel {
@@ -6,6 +6,11 @@ final class PostUserViewModel {
   private let urlOpener: URLOpener
   private let user: User?
 
+  var userID: Int? {
+    return user?.id
+  }
+
+  let profilePicture: UIImage
   let name: String
   let company: String
   let email: String
@@ -18,6 +23,8 @@ final class PostUserViewModel {
     self.urlOpener = urlOpener
     user = nil
 
+    self.profilePicture = #imageLiteral(resourceName: "PlaceholderProfile")
+
     name = ""
     company = ""
     email = ""
@@ -25,13 +32,11 @@ final class PostUserViewModel {
     address = ""
   }
 
-  init?(urlOpener: URLOpener, user: User?) {
-    guard let user = user else {
-      return nil
-    }
-
+  init(urlOpener: URLOpener, user: User, profilePicture: UIImage?) {
     self.urlOpener = urlOpener
     self.user = user
+
+    self.profilePicture = profilePicture ?? #imageLiteral(resourceName: "PlaceholderProfile")
 
     name = user.name
     company = user.company.name

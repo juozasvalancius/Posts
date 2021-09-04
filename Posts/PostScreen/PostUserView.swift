@@ -7,8 +7,11 @@ struct PostUserView: View {
   var body: some View {
     VStack(spacing: 0) {
       HStack(spacing: 20) {
-        Circle()
+        Image(uiImage: viewModel.profilePicture)
+          .resizable()
+          .aspectRatio(contentMode: .fill)
           .frame(width: 88, height: 88)
+          .clipShape(Circle())
         VStack(alignment: .leading) {
           Text(viewModel.name)
             .font(.headline)
@@ -81,9 +84,13 @@ struct Separator: View {
 
 struct PostUserViewPreviews: PreviewProvider {
   static var previews: some View {
-    let user = MemoryStorage.makeWithMockData().getUser(id: 1)
+    let user = MemoryStorage.makeWithMockData().getUser(id: 1)!
     PostUserView(
-      viewModel: PostUserViewModel(urlOpener: SystemURLOpener(), user: user)!
+      viewModel: PostUserViewModel(
+        urlOpener: SystemURLOpener(),
+        user: user,
+        profilePicture: nil
+      )
     )
     .padding()
   }
