@@ -57,18 +57,10 @@ final class MainScreenViewModel: ObservableObject {
 
   func makeRowViewModel(postID: Int) -> PostRowViewModel {
     guard let post = storage.getPost(id: postID) else {
-      return PostRowViewModel(id: postID, title: "", body: "", user: "")
+      return PostRowViewModel(postID: postID)
     }
 
-    let userInfo: String
-
-    if let user = storage.getUser(id: post.userID) {
-      userInfo = "\(user.name) (\(user.company.name))"
-    } else {
-      userInfo = "..."
-    }
-
-    return PostRowViewModel(id: post.id, title: post.title, body: post.body, user: userInfo)
+    return PostRowViewModel(post: post, user: storage.getUser(id: post.userID))
   }
 
   private func makePostScreenViewModel(id: Int) -> PostScreenViewModel {
@@ -102,8 +94,27 @@ final class MainScreenViewModel: ObservableObject {
 }
 
 struct PostRowViewModel: Identifiable {
+
   let id: Int
   let title: String
   let body: String
-  let user: String
+  let userName: String
+  let company: String
+
+  init(postID: Int) {
+    id = postID
+    title = ""
+    body = ""
+    userName = ""
+    company = ""
+  }
+
+  init(post: Post, user: User?) {
+    id = post.id
+    title = post.title
+    body = post.body
+    userName = user?.name ?? ""
+    company = user?.company.name ?? "..."
+  }
+
 }

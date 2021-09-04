@@ -57,7 +57,7 @@ struct UserInfoCell: View {
         Spacer()
       }
       .frame(minHeight: 44)
-      .foregroundColor(.blue)
+      .foregroundColor(Color.accentColor)
       .contentShape(Rectangle().inset(by: 8)) // makes sure the Spacer is tappable
     })
     .buttonStyle(HighlightingButtonStyle())

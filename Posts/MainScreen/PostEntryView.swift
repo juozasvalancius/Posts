@@ -9,11 +9,22 @@ struct PostEntryView: View {
   }
 
   var body: some View {
-    VStack(alignment: .leading) {
-      Text(viewModel.user)
+    VStack(alignment: .leading, spacing: 4) {
+      HStack(alignment: .firstTextBaseline) {
+        Text(viewModel.userName)
+          .font(.title3)
+          .layoutPriority(1)
+        Text(viewModel.company)
+          .font(.caption)
+        Spacer()
+      }
+      .foregroundColor(.accentColor)
       Text(viewModel.title)
+        .font(.title)
       Text(viewModel.body)
+        .font(.subheadline)
     }
+    .padding(.vertical, 14)
     .lineLimit(1)
   }
 
