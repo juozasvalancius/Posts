@@ -10,7 +10,9 @@ final class MainScreenViewModelTests: XCTestCase {
     dataLoader = MockDataLoader()
     viewModel = MainScreenViewModel(
       storage: MockStorage.make(),
-      dataLoader: dataLoader
+      dataLoader: dataLoader,
+      urlOpener: MockURLOpener(),
+      imageLoader: MockImageLoader()
     )
   }
 
@@ -21,7 +23,8 @@ final class MainScreenViewModelTests: XCTestCase {
   func testPostRowWithUser() {
     let row = viewModel.makeRowViewModel(postID: 1)
     XCTAssertEqual(row.id, 1)
-    XCTAssertEqual(row.user, "John (Example Inc.)")
+    XCTAssertEqual(row.userName, "John")
+    XCTAssertEqual(row.company, "Example Inc.")
     XCTAssertEqual(row.title, "One")
     XCTAssertEqual(row.body, "Lorem ipsum one")
   }
@@ -29,17 +32,22 @@ final class MainScreenViewModelTests: XCTestCase {
   func testPostRowWithoutUser() {
     let row = viewModel.makeRowViewModel(postID: 3)
     XCTAssertEqual(row.id, 3)
-    XCTAssertEqual(row.user, "...")
+    XCTAssertEqual(row.userName, "")
+    XCTAssertEqual(row.company, "...")
     XCTAssertEqual(row.title, "Three")
     XCTAssertEqual(row.body, "Lorem ipsum three")
   }
 
-  func testRefreshState() {
-    XCTAssertFalse(viewModel.isRefreshing)
-    viewModel.didRequestRefresh()
+  func testRefreshInitialState() {
     XCTAssertTrue(viewModel.isRefreshing)
     dataLoader.postListUpdate.send(())
     XCTAssertFalse(viewModel.isRefreshing)
+  }
+
+  func testRefreshRequest() {
+    dataLoader.postListUpdate.send(())
+    viewModel.didRequestRefresh()
+    XCTAssertTrue(viewModel.isRefreshing)
   }
 
   func testInitiallyNotPresentedPostScreen() {
