@@ -30,6 +30,7 @@
 		ABDE1C3F26D1069100377B15 /* PostsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDE1C3E26D1069100377B15 /* PostsApp.swift */; };
 		ABDE1C4326D1069100377B15 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABDE1C4226D1069100377B15 /* Assets.xcassets */; };
 		ABFE249526DE87C3009EA95E /* BackgroundUserLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */; };
+		ABFE372626E36E040050FFEC /* PostUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFE372526E36E040050FFEC /* PostUserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,7 @@
 		ABDE1C4226D1069100377B15 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABDE1C4726D1069100377B15 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ABFE249426DE87C3009EA95E /* BackgroundUserLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundUserLoader.swift; sourceTree = "<group>"; };
+		ABFE372526E36E040050FFEC /* PostUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostUserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				AB64525D26DA4FDC005D8B7A /* PostScreenViewModel.swift */,
 				AB64526226DA5262005D8B7A /* PostScreenView.swift */,
+				ABFE372526E36E040050FFEC /* PostUserView.swift */,
 			);
 			path = PostScreen;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				AB64526326DA5262005D8B7A /* PostScreenView.swift in Sources */,
 				AB6E676326DAA529000ECCE7 /* Services.swift in Sources */,
 				AB64524026DA3480005D8B7A /* Post.swift in Sources */,
+				ABFE372626E36E040050FFEC /* PostUserView.swift in Sources */,
 				AB64523D26D96DA5005D8B7A /* PostEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

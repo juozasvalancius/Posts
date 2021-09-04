@@ -11,14 +11,7 @@ struct PostScreenView: View {
   var body: some View {
     LegacyScrollView {
       VStack {
-        HStack {
-          Text("User:")
-          Text(viewModel.user.name)
-          Spacer()
-        }
-        .padding()
-        .background(Color(white: 0, opacity: 0.2))
-        .cornerRadius(8)
+        PostUserView(dataModel: viewModel.user)
         HStack {
           VStack(alignment: .leading) {
             Text(viewModel.post.title)

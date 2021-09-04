@@ -70,9 +70,17 @@ final class PostScreenViewModel: ObservableObject {
 struct UserDataModel {
 
   let name: String
+  let company: String
+  let email: String
+  let phone: String
+  let address: String
 
   init() {
     name = ""
+    company = ""
+    email = ""
+    phone = ""
+    address = ""
   }
 
   init?(user: User?) {
@@ -81,8 +89,18 @@ struct UserDataModel {
     }
 
     name = user.name
+    company = user.company.name
+    email = user.email
+    phone = user.phone
+    address = user.address.formatted
   }
 
+}
+
+extension Address {
+  var formatted: String {
+    return "\(street), \(suite), \(city), \(zipcode)"
+  }
 }
 
 struct PostDataModel {
