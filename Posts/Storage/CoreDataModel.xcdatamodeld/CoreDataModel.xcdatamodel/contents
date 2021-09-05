@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="18154" systemVersion="20G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="PostEntity" representedClassName="PostEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="body" attributeType="String"/>
+        <attribute name="identifier" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="title" attributeType="String"/>
+        <attribute name="userID" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <relationship name="userEntity" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UserEntity" inverseName="postEntities" inverseEntity="UserEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="identifier"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="UserEntity" representedClassName="UserEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="addressCity" attributeType="String"/>
+        <attribute name="addressLatitude" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="addressLongitude" attributeType="Double" usesScalarValueType="YES"/>
+        <attribute name="addressStreet" attributeType="String"/>
+        <attribute name="addressSuite" attributeType="String"/>
+        <attribute name="addressZipcode" attributeType="String"/>
+        <attribute name="companyBS" attributeType="String"/>
+        <attribute name="companyCatchPhrase" attributeType="String"/>
+        <attribute name="companyName" attributeType="String"/>
+        <attribute name="email" attributeType="String"/>
+        <attribute name="identifier" attributeType="Integer 64" usesScalarValueType="YES"/>
+        <attribute name="name" attributeType="String"/>
+        <attribute name="phone" attributeType="String"/>
+        <attribute name="website" attributeType="String"/>
+        <relationship name="postEntities" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PostEntity" inverseName="userEntity" inverseEntity="PostEntity"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="identifier"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="PostEntity" positionX="-255.5755004882812" positionY="-14.60928344726562" width="128" height="118"/>
+        <element name="UserEntity" positionX="-54" positionY="-9" width="128" height="268"/>
+    </elements>
+</model>

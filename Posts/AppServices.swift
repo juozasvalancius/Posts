@@ -17,7 +17,7 @@ struct AppServices: Services {
 
   init() {
     api = TypicodeAPI()
-    storage = MemoryStorage()
+    storage = CoreDataStorage()
     dataLoader = StoringDataLoader(api: api, storage: storage)
     backgroundUserLoader = BackgroundUserLoader(storage: storage, dataLoader: dataLoader)
     urlOpener = SystemURLOpener()

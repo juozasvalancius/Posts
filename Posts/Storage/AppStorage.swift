@@ -5,7 +5,7 @@ protocol AppStorage: AnyObject {
   func sortedPostIDs() -> AnyPublisher<[Int], Never>
   func post(id: Int) -> AnyPublisher<Post?, Never>
   func user(id: Int) -> AnyPublisher<User?, Never>
-  /// Emits an event everytime the a User is updated.
+  /// Emits an event everytime a User is updated.
   func usersChange() -> AnyPublisher<Void, Never>
 
   func getPost(id: Int) -> Post?
