@@ -25,6 +25,9 @@ struct MainScreenView: View {
     .refreshable(isRefreshing: viewModel.isRefreshing) {
       viewModel.didRequestRefresh()
     }
+    .errorAlert(message: $viewModel.error) {
+      viewModel.didTapRetry()
+    }
     .navigationBarTitle("Posts", displayMode: .inline)
   }
 

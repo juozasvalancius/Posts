@@ -20,6 +20,9 @@ struct PostScreenView: View {
     .refreshable(isRefreshing: isRefreshing) {
       viewModel.didRequestRefresh()
     }
+    .errorAlert(message: $viewModel.error) {
+      viewModel.didTapRetry()
+    }
     .navigationBarTitle("Post", displayMode: .inline)
   }
 

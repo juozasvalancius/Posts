@@ -22,6 +22,9 @@ final class PostScreenViewModel: ObservableObject {
   @Published
   private var userPicture: UIImage?
 
+  @Published
+  var error: String?
+
   private var storageObservation: Cancellable?
   private var reloadCancellable: AnyCancellable?
   private var userPictureCancellable: AnyCancellable?
@@ -81,14 +84,18 @@ final class PostScreenViewModel: ObservableObject {
     // load the post first, then update the user based on user id from the post
     reloadCancellable = dataLoader.updatePost(id: postID)
       .flatMap(dataLoader.updateUser(id:))
-      .catch { error -> Just<Void> in
-        print(error)
-        return Just(())
-      }
-      .sink { [weak self] in
-        self?.reloadCancellable = nil
-        self?.isRefreshing = false
-      }
+      .sink(receiveCompletion: { [weak self] completion in
+        guard let self = self else {
+          return
+        }
+        if case .failure(let error) = completion {
+          self.error = error.userDescription
+        } else {
+          self.error = nil
+        }
+        self.reloadCancellable = nil
+        self.isRefreshing = false
+      }, receiveValue: { _ in })
 
     if let userID = user.userID {
       refreshProfilePhoto(userID: userID)
@@ -101,6 +108,10 @@ final class PostScreenViewModel: ObservableObject {
       .sink { [weak self] image in
         self?.userPicture = image
       }
+  }
+
+  func didTapRetry() {
+    didRequestRefresh()
   }
 
 }

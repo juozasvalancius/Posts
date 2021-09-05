@@ -20,6 +20,9 @@ final class MainScreenViewModel: ObservableObject {
   @Published
   private(set) var presentedPostScreen: PostScreenViewModel?
 
+  @Published
+  var error: String?
+
   var presentedPostID: Int? {
     get {
       return presentedPostScreen?.postID
@@ -81,14 +84,22 @@ final class MainScreenViewModel: ObservableObject {
     isRefreshing = true
 
     reloadCancellable = dataLoader.updatePostList()
-      .catch { error -> Just<Void> in
-        print(error)
-        return Just(())
-      }
-      .sink { [weak self] in
-        self?.reloadCancellable = nil
-        self?.isRefreshing = false
-      }
+      .sink(receiveCompletion: { [weak self] completion in
+        guard let self = self else {
+          return
+        }
+        if case .failure(let error) = completion {
+          self.error = error.userDescription
+        } else {
+          self.error = nil
+        }
+        self.reloadCancellable = nil
+        self.isRefreshing = false
+      }, receiveValue: { _ in })
+  }
+
+  func didTapRetry() {
+    didRequestRefresh()
   }
 
 }
@@ -117,4 +128,17 @@ struct PostRowViewModel: Identifiable {
     company = user?.company.name ?? "..."
   }
 
+}
+
+extension APIError {
+  var userDescription: String {
+    switch self {
+    case .internalInconsistency:
+      return "Something went wrong."
+    case .badResponse:
+      return "Server error, please try later."
+    case .networkError:
+      return "Please check your internet connection."
+    }
+  }
 }
