@@ -40,7 +40,7 @@ final class MainScreenViewModelTests: XCTestCase {
 
   func testRefreshInitialState() {
     XCTAssertTrue(viewModel.isRefreshing)
-    dataLoader.postListUpdate.send(())
+    dataLoader.postListUpdate.send(completion: .finished)
     XCTAssertFalse(viewModel.isRefreshing)
   }
 
